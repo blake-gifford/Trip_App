@@ -8,6 +8,7 @@ const initialUser = {
     email:'',
     password:'',
     confirmPassword:'',
+    trips:[],
 }
 
 const ViewUser = props => {
