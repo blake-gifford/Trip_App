@@ -29,7 +29,7 @@ const CreateTrip = () => {
 
     const submitHandler = e => {
         e.preventDefault();
-        axios.post('ourapicall', trip)
+        axios.post(`http://localhost:8000/api/newtrip`, trip)
         .then(response => {
             const { message, results } = response.data
             if( message === "success"){

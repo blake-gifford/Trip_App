@@ -12,7 +12,7 @@ const TripSchema = new mongoose.Schema({
         type: String,
         required: [true, "Please enter a name for your trip."]
     },
-    locaion: {
+    location: {
         type: String,
         required: [true, "Please enter your trips location."]
     },
