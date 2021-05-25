@@ -32,7 +32,7 @@ const CreateUser = () => {
 
     const submitHandler = e => {
         e.preventDefault();
-        axios.post('ourapicall', user)
+        axios.post('http://localhost:8000/api/register', user)
         .then(response => {
             const { message, results } = response.data
             if( message === "success"){

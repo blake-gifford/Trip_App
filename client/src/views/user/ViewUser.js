@@ -16,7 +16,7 @@ const ViewUser = props => {
     const [ user, setUser ] = useState(initialUser)
 
     useEffect(()=>{
-        axios.get(`api/${id}`)
+        axios.get(`http://localhost:8000/api/user/${id}`)
             .then(response => setUser(response.data.results))
             .catch(err => console.log(err))
     },[id])
