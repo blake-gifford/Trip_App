@@ -2,7 +2,7 @@ import React from 'react'
 
 const TripForm = props => {
 
-    const { submitHandler, changeHandler, errors, trip, action} = props;
+    const { submitHandler, changeHandler, errors, user, action} = props;
 
 
     return (
@@ -15,7 +15,7 @@ const TripForm = props => {
                     ""
                     }
                     <label htmlFor="name">Name</label>
-                    <input type="text" name="name" id="" onChange={changeHandler} value={trip.name} />
+                    <input type="text" name="name" id="" onChange={changeHandler}  />
                 </p>
                 <p>
                     {errors.location ?
@@ -24,7 +24,7 @@ const TripForm = props => {
                     ""
                     }
                     <label htmlFor="location">Location</label>
-                    <input type="text" name="location" id="" onChange={changeHandler} value={trip.location}/>
+                    <input type="text" name="location" id="" onChange={changeHandler} />
                 </p>
                 <p>
                     {errors.startDate ?
@@ -33,7 +33,7 @@ const TripForm = props => {
                     ""
                     }
                     <label htmlFor="startDate">Start Date</label>
-                    <input type="date" name="startDate" id="" onChange={changeHandler} value={trip.startDate}/>
+                    <input type="date" name="startDate" id="" onChange={changeHandler} />
                 </p>
                 <p>
                     {errors.endDate ?
@@ -42,7 +42,7 @@ const TripForm = props => {
                     ""
                     }
                     <label htmlFor="endDate">End Date</label>
-                    <input type="date" name="endDate" id="" onChange={changeHandler} value={trip.endDate} />
+                    <input type="date" name="endDate" id="" onChange={changeHandler} />
                 </p>
                 <input type="submit" value={ action } />
             </form>
