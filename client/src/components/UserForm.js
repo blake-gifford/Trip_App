@@ -58,7 +58,7 @@ const UserForm = props => {
                     ""
                 }
                 <label htmlFor="confirmPassword">Confirm Password</label>
-                <input type="text" name="confirmPassword" id="" onChange = {changeHandler} value={user.confirmPassword}/>
+                <input type="password" name="confirmPassword" id="" onChange = {changeHandler} value={user.confirmPassword}/>
             </p>
             <input type="submit" value={ action } />
         </form>

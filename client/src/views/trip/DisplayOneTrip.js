@@ -12,7 +12,7 @@ const initialTrip = {
 const DisplayOneTrip = props => {
 
     const { id } = props;
-    const [ trip,setTrip ] = useState(initialTrip)
+    const [ trip, setTrip ] = useState(initialTrip)
 
     useEffect(()=>{
         axios.get(`http://localhost:8000/api/trip/${id}`)
