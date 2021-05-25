@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import TripForm from "../../components/TripForm"
 import axios from 'axios'
 import { navigate } from '@reach/router'
@@ -17,10 +17,28 @@ const initialTrip = {
     endDate:'',
 }
 
-const CreateTrip = () => {
+const initialUser = {
+    userName:'',
+    firstName:'',
+    lastName:'',
+    email:'',
+    password:'',
+    confirmPassword:'',
+    trips: [],
+}
 
+const CreateTrip = props => {
+
+    const { id } = props;
+    const [ user, setUser ]=useState(initialUser)
     const [ trip, setTrip] = useState(initialTrip)
     const [ errors, setErrors] = useState(initialErrors)
+
+    useEffect(()=>{
+        axios.get(`http://localhost:8000/api/user/${id}`)
+            .then(response => setUser(response.data.results))
+            .catch(err => console.log(err))
+    },[id])
 
     const changeHandler = e => {
         const { name, value } = e.target;
@@ -29,7 +47,7 @@ const CreateTrip = () => {
 
     const submitHandler = e => {
         e.preventDefault();
-        axios.post(`http://localhost:8000/api/newtrip`, trip)
+        axios.put(`http://localhost:8000/api/trip/update/${id}`, user)
         .then(response => {
             const { message, results } = response.data
             if( message === "success"){
@@ -50,7 +68,7 @@ const CreateTrip = () => {
 
     return (
         <div>
-            <TripForm trip={trip} changeHandler = {changeHandler} submitHandler = {submitHandler} errors={errors} action="Create Trip!"/>
+            <TripForm user={user} changeHandler = {changeHandler} submitHandler = {submitHandler} errors={errors} action="Create Trip!"/>
         </div>
     )
 }

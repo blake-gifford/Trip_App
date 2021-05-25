@@ -19,6 +19,7 @@ const initialUser = {
     email:'',
     password:'',
     confirmPassword:'',
+    trips: [],
 }
 
 const CreateUser = () => {
