@@ -16,10 +16,11 @@ const DisplayOneTrip = props => {
 
     useEffect(()=>{
         axios.get(`http://localhost:8000/api/trip/${id}`)
-            .then(response => setTrip(response.data.results))
+            .then(response => setTrip(response.data.results.trips.filter(t=>t._id===id)[0]))
             .catch(err => console.log(err))
     },[id])
 
+    
     return (
         <div className="App">
             <h2>Trip Name: {trip.name}</h2>
@@ -31,3 +32,4 @@ const DisplayOneTrip = props => {
 }
 
 export default DisplayOneTrip
+
