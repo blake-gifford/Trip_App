@@ -26,7 +26,7 @@ function App() {
 
 
         <CreateTrip path="/trip/create"/>
-        <DisplayAllTrips path="/trip/display/:id/:trip_id/all"/>
+        <DisplayAllTrips path="/trip/display/:id/all"/>
         <DisplayTrip path="/trip/display/:id/:trip_id"/>
         <EditTrip path="/trip/display/:id/:trip_id/edit"/>
 
