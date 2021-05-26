@@ -112,12 +112,12 @@ module.exports = {
                 .catch(err => res.json({ message: "error", results: err }))
         },
         getOneTrip: (req, res) => {
-            User.findOne({ _id: req.params.id })
+            User.findOne({"trip._id": req.params.id})
                 .then(user => res.json({ message: "success", results: user }))
                 .catch(err => res.json({ message: "error", results: err }))
         },
         updateTrip: (req, res) => {
-            User.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true })
+            User.findByIdAndUpdate(req.params.id,{ $push: { trips: req.body } }, { new: true, runValidators: true })
                 .then(user => res.json({ message: "success", results: user }))
                 .catch(err => res.json({ message: "error", results: err }))
         },
