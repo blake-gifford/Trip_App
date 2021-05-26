@@ -71,6 +71,11 @@ module.exports = {
             // .then((user) => res.json(user))
             // .catch((err) => res.json(err));
         },
+        // register(req, res) {
+        //     User.create(req.body)
+        //         .then(user => res.json({ message: "success", results: user }))
+        //         .catch(err => res.json({ message: "error", results: err }))
+        // },
     
         getAllUsers(req, res) {
             User.find()
@@ -81,8 +86,11 @@ module.exports = {
         },
     
         getOneUser(req, res) {
-            User.findOne({ _id: req.params.id })
-                .then(user => res.json({ message: "success", results: user }))
+            User.findById(req.params.id)
+                .then(user => {
+                    console.log("hello")
+                    res.json({ message: "success", results: user })
+                })
                 .catch(err => res.json({ message: "error", results: err }))
             // .then((user) => res.json(user))
             // .catch((err) => res.json(err));
