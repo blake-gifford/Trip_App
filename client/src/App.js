@@ -2,8 +2,8 @@ import './App.css';
 import Header from './components/Header';
 import { Router } from '@reach/router';
 import CreateUser from './views/user/CreateUser';
-import EditUser from './views/user/CreateUser';
-import ViewUser from './views/user/CreateUser';
+import EditUser from './views/user/EditUser';
+import ViewUser from './views/user/ViewUser';
 import Dashboard from './views/Dashboard';
 import InfoPage from './views/InfoPage';
 import CreateTrip from "./views/trip/CreateTrip";
@@ -25,7 +25,7 @@ function App() {
           <EditUser path="/user/edit/:id"/>
 
           <CreateTrip path="/trip/create"/>
-          <DisplayAllTrips path="/trip/display/all"/>
+          <DisplayAllTrips path="/trip/display/:id/all"/>
           <DisplayTrip path="/trip/display/:id"/>
           <EditTrip path="/trip/display/:id/edit"/>
 
