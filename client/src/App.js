@@ -24,10 +24,12 @@ function App() {
           <ViewUser path="/user/view/:id"/>
           <EditUser path="/user/edit/:id"/>
 
-          <CreateTrip path="/trip/create"/>
-          <DisplayAllTrips path="/trip/display/all"/>
-          <DisplayTrip path="/trip/display/:id"/>
-          <EditTrip path="/trip/display/:id/edit"/>
+
+        <CreateTrip path="/trip/create"/>
+        <DisplayAllTrips path="/trip/display/:id/:trip_id/all"/>
+        <DisplayTrip path="/trip/display/:id/:trip_id"/>
+        <EditTrip path="/trip/display/:id/:trip_id/edit"/>
+
 
           <InfoPage path="/info"/>
           <LogReg path="/user/login"></LogReg>
