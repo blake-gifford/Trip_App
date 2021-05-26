@@ -1,6 +1,8 @@
 import React from 'react'
 
-const Dashboard = () => {
+const Dashboard = props => {
+    const { id, user } = props;
+
     return (
         <div>
             
