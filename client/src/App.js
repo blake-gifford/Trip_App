@@ -17,21 +17,21 @@ import LogReg from "./views/LogReg";
 function App() {
   return (
     <>
-    <Header></Header>
-    <Dashboard path ="/"/>
-      <Router>
-        <CreateUser path="/user/create"/>
-        <ViewUser path="/user/view/:id"/>
-        <EditUser path="/user/edit/:id"/>
+      <Header></Header>
+        <Router>
+          <Dashboard path ="/"/>
+          <CreateUser path="/user/create"/>
+          <ViewUser path="/user/view/:id"/>
+          <EditUser path="/user/edit/:id"/>
 
-        <CreateTrip path="/trip/create"/>
-        <DisplayAllTrips path="/trip/display/all"/>
-        <DisplayTrip path="/trip/display/:id"/>
-        <EditTrip path="/trip/display/:id/edit"/>
+          <CreateTrip path="/trip/create"/>
+          <DisplayAllTrips path="/trip/display/all"/>
+          <DisplayTrip path="/trip/display/:id"/>
+          <EditTrip path="/trip/display/:id/edit"/>
 
-        <InfoPage path="/info"/>
-        <LogReg path="/user/login"></LogReg>
-      </Router>
+          <InfoPage path="/info"/>
+          <LogReg path="/user/login"></LogReg>
+        </Router>
     </>
   );
 }

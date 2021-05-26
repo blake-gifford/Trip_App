@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from '@reach/router'
 const Header = () => {
     return (
-        <div>
+        <div >
             <header >
                 <h5><Link to="/user/view">Account</Link>|<Link to="/trip/create">Create Trip</Link>|<Link to="/trip/display/all">Your Trips</Link>|<Link to="/info">Contact Us</Link>|<Link to="/info">About</Link>|<Link to="/user/create">Sign Up!|</Link>
                 <Link to="/user/login">Login|</Link>

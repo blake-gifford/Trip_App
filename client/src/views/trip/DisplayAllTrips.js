@@ -37,7 +37,7 @@ const DisplayAllTrips = props => {
                 </thead>
                 <tbody>
                 {
-                    user.trips.map((trip,i)=>
+                    user.trips.map((trip, i)=>
                     <tr className="App" key={i}>
                         <td>{trip.name}</td>
                         <td>{trip.location}</td>
