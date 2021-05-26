@@ -4,8 +4,14 @@ const InfoPage = () => {
     return (
         <div>
             <h1>Contact Us</h1>
-            <p>Some info</p>
+            
+            <ul>Email
+                <li>blakegifford01@gmail.com</li>
+                <li>jonling88@gmail.com</li>
+                <li>Phone Number: (xxx)-xxx-xxxx</li>
+            </ul>
             <h1>About Us</h1>
+            <p>We're a small app dedicated to helping our users plan their perfect trip. Come join us and discuss your trip experiences in our community forum!</p>
             <p>Some info</p>
         </div>
     )

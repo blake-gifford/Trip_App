@@ -5,6 +5,7 @@ module.exports = app => {
     // insert routes here
     // CREATE
     app.post("/api/register", controller.register);
+
     app.post("/api/login", controller.login);
     app.post("/api/logout", controller.logout);
     // app.post("/api/newtrip", controller.createTrip);
@@ -14,6 +15,7 @@ module.exports = app => {
     app.get("/api/users/loggedin", controller.getLoggedInUser);
     // app.get("/api/users/loggedin", authenticate, controller.getLoggedInUser);
     app.get("/api/user/:id", controller.getOneUser);
+
     // UPDATE
     app.put("/api/user/update/:id", controller.updateUser);
     app.put("/api/trip/update/:id", controller.updateTrip);
