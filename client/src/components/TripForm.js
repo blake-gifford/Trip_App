@@ -2,7 +2,7 @@ import React from 'react'
 
 const TripForm = props => {
 
-    const { submitHandler, changeHandler, errors, user, action} = props;
+    const { submitHandler, changeHandler, errors, user, action, location} = props;
 
 
     return (
@@ -24,7 +24,8 @@ const TripForm = props => {
                     ""
                     }
                     <label htmlFor="location">Location</label>
-                    <input type="text" name="location" id="" onChange={changeHandler}/>
+                    <input type="text" name="location" id="" onChange={changeHandler} value={location}/>
+
                 </p>
                 <p>
                     {errors.startDate ?
