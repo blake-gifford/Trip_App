@@ -7,11 +7,13 @@ const SignUp = (props) => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState(null);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
 
   const register = (event) => {
     event.preventDefault();
 
-    const newUser = { username, email, password, confirmPassword };
+    const newUser = { username, email, password, confirmPassword, firstName, lastName };
 
     axios
       .post("http://localhost:8000/api/register", newUser, {
@@ -24,6 +26,9 @@ const SignUp = (props) => {
         setEmail("");
         setPassword("");
         setConfirmPassword("");
+        // my add
+        setFirstName("");
+        setLastName("");
       })
       .catch((err) => {
         console.log(err);
@@ -49,6 +54,38 @@ const SignUp = (props) => {
           {errors?.username && (
             <span className="error-message">
               {errors.username?.properties?.message}
+            </span>
+          )}
+        </div>
+            
+        <div className="form-group">
+          <label>First Name:</label>
+          <input
+            type="text"
+            name="firstName"
+            onChange={(e) => setFirstName(e.target.value)}
+            value={firstName}
+          />
+          {/* ?. is called optional chaining, lets you safely try to access keys that might not exist and avoid errors */}
+          {errors?.firstName && (
+            <span className="error-message">
+              {errors.firstName?.properties?.message}
+            </span>
+          )}
+        </div>
+      
+        <div className="form-group">
+          <label>Last Name:</label>
+          <input
+            type="text"
+            name="lastName"
+            onChange={(e) => setLastName(e.target.value)}
+            value={lastName}
+          />
+          {/* ?. is called optional chaining, lets you safely try to access keys that might not exist and avoid errors */}
+          {errors?.lastName && (
+            <span className="error-message">
+              {errors.lastName?.properties?.message}
             </span>
           )}
         </div>

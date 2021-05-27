@@ -21,6 +21,7 @@ const DisplayOneTrip = props => {
                 console.log(response.data.results.trips.filter(t=>trip_id===t._id)[0])
                 console.log(response)
             })
+
             .catch(err => console.log(err))
     },[id, trip_id])
     

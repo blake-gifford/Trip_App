@@ -1,6 +1,6 @@
 import './App.css';
 import Header from './components/Header';
-import { Router } from '@reach/router';
+import { Router, navigate } from '@reach/router';
 import CreateUser from './views/user/CreateUser';
 import EditUser from './views/user/EditUser';
 import ViewUser from './views/user/ViewUser';
@@ -13,12 +13,36 @@ import EditTrip from "./views/trip/EditTrip";
 import LogReg from "./views/LogReg";
 import SearchPage from './views/trip/SearchPage';
 
-
+import axios from 'axios';
+import { useState } from 'react';
 
 function App() {
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const logout = () => {
+    axios
+      .post(
+        "http://localhost:8000/api/logout",
+        {},
+        {
+          // need to send the cookie in request so server can clear it
+          withCredentials: true,
+        }
+      )
+      .then((res) => {
+        console.log(res);
+        setIsLoggedIn(false);
+      })
+      .catch(console.log);
+
+    navigate("/");
+  };
+
   return (
     <div className="container">
       <Header></Header>
+        {isLoggedIn && <button onClick={logout}>Logout</button>}
         <Router>
           <Dashboard path ="/"/>
           <CreateUser path="/user/create"/>
@@ -34,7 +58,9 @@ function App() {
 
 
           <InfoPage path="/info"/>
-          <LogReg path="/user/login"></LogReg>
+          
+          <LogReg setLoggedIn={() => setIsLoggedIn(true)} path="/user/login" />
+
         </Router>
     </div>
   );

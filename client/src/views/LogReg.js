@@ -1,11 +1,15 @@
-import React from 'react'
+import React from "react";
 
-const LogReg = () => {
-    return (
-        <div>
-            
-        </div>
-    )
-}
+import SignIn from "../components/LoginReg/SignIn";
+import SignUp from "../components/LoginReg/SignUp";
 
-export default LogReg
+const LogReg = ({ setLoggedIn }) => {
+  return (
+    <div className="container-flex">
+      <SignIn setLoggedIn={setLoggedIn} />
+      <SignUp />
+    </div>
+  );
+};
+
+export default LogReg;

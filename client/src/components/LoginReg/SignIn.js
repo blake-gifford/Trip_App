@@ -21,7 +21,7 @@ const SignIn = ({ setLoggedIn }) => {
         .then((res) => {
             console.log(res);
             setLoggedIn();
-            navigate("/users");
+            navigate("/dashboard");
         })
         .catch((err) => {
             console.log(err);
