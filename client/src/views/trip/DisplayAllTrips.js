@@ -44,7 +44,7 @@ const DisplayAllTrips = props => {
                         <td>{trip.startDate}</td>
                         <td>{trip.endDate}</td>
                         <td>
-                            <button onClick = { ()=>navigate(`/trip/${user._id}/${trip_.id}`)}>Details</button>
+                            <button onClick = { ()=>navigate(`/trip/${user._id}/${trip._id}`)}>Details</button>
                             <button onClick = { ()=>navigate(`/trip/${user._id}/${trip._id}/edit`)}>Edit</button>
                         </td>
                     </tr>

@@ -16,7 +16,7 @@ const DisplayOneTrip = props => {
 
     useEffect(()=>{
         axios.get(`http://localhost:8000/api/user/${id}`)
-            .then(response => setTrip(response.data.results.trips.filter(t=>trip_id===id)[0]))
+            .then(response => setTrip(response.data.results.trips.filter(t=>trip_id===t._id)[0]))
             .catch(err => console.log(err))
     },[id])
 
