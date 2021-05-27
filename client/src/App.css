@@ -2,6 +2,20 @@
   text-align: center;
 }
 
+.container {
+  margin: 30px;
+}
+
+.dash_flex {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.dash_weather {
+  text-align: center;
+  min-width: 400px;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

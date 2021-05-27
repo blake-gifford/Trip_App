@@ -15,7 +15,7 @@ module.exports = app => {
     app.get("/api/users/loggedin", controller.getLoggedInUser);
     // app.get("/api/users/loggedin", authenticate, controller.getLoggedInUser);
     app.get("/api/user/:id", controller.getOneUser);
-
+    app.get("/api/trip/:id", controller.getOneTrip);
     // UPDATE
     app.put("/api/user/update/:id", controller.updateUser);
     app.put("/api/trip/update/:id", controller.updateTrip);

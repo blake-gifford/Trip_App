@@ -1,3 +1,4 @@
+import '../App.css';
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { navigate, Link } from '@reach/router'
@@ -44,17 +45,24 @@ const Dashboard = props => {
 
 
     return (
-        <>
+        <div className="container">
             <div>
                 <h2>Welcome {user.firstName}!</h2>
             </div>
-            <div>
-                <p>{weather.main}</p>
-                <p>{weather.temp}</p>
-                <p>{weather.description}</p>
+            <div className="dash_flex">
+                <div className="dash_weather">
+                    <h3>Current Temperature outside: {weather.temp}°F</h3>
+                    <h3>{weather.main}</h3>
+                    <h3>{weather.description}</h3>
+                </div>
+                <div className="dash_weather">
+                    <h2>This is filler text until we decide what to put here!</h2>
+                    <h4>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit, deserunt velit voluptas voluptatibus nostrum amet, ipsum, reprehenderit officia repudiandae architecto fugit. Consectetur, dolores qui molestias eos iure quia suscipit inventore.</h4>
+                    <h4>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit, deserunt velit voluptas voluptatibus nostrum amet, ipsum, reprehenderit officia repudiandae architecto fugit. Consectetur, dolores qui molestias eos iure quia suscipit inventore.</h4>
+                </div>
             </div>
-        </>
+        </div>
     )
 }
 
-export default Dashboard
+export default Dashboard;

@@ -13,6 +13,7 @@ const InfoPage = () => {
             <h1>About Us</h1>
             <p>We're a small app dedicated to helping our users plan their perfect trip. Come join us and discuss your trip experiences in our community forum!</p>
             <p>Some info</p>
+
         </div>
     )
 }

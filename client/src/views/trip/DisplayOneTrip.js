@@ -16,12 +16,17 @@ const DisplayOneTrip = props => {
 
     useEffect(()=>{
         axios.get(`http://localhost:8000/api/user/${id}`)
-            .then(response => setTrip(response.data.results.trips.filter(t=>trip_id===t._id)[0]))
-            .catch(err => console.log(err))
-    },[id])
+            .then(response => {
+                setTrip(response.data.results.trips.filter(t=>trip_id===t._id)[0])
+                console.log(response.data.results.trips.filter(t=>trip_id===t._id)[0])
+                console.log(response)
+            })
 
+            .catch(err => console.log(err))
+    },[id, trip_id])
     
     return (
+
         <div className="App">
             <h2>Trip Name: {trip.name}</h2>
             <p>Location: {trip.location}</p>
