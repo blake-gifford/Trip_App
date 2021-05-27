@@ -15,8 +15,8 @@ const SignUp = (props) => {
 
     const newUser = { username, email, password, confirmPassword, firstName, lastName };
 
-    axios
-      .post("http://localhost:8000/api/register", newUser, {
+    
+    axios.post("http://localhost:8000/api/register", newUser, {
         withCredentials: true,
       })
       .then((res) => {
