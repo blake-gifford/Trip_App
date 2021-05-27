@@ -25,6 +25,7 @@ const DisplayOneTrip = props => {
     },[id, trip_id])
     
     return (
+
         <div className="App">
             <h2>Trip Name: {trip.name}</h2>
             <p>Location: {trip.location}</p>

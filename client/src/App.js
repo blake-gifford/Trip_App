@@ -11,12 +11,13 @@ import DisplayAllTrips from "./views/trip/DisplayAllTrips";
 import DisplayTrip from "./views/trip/DisplayOneTrip";
 import EditTrip from "./views/trip/EditTrip";
 import LogReg from "./views/LogReg";
+import SearchPage from './views/trip/SearchPage';
 
 
 
 function App() {
   return (
-    <>
+    <div className="container">
       <Header></Header>
         <Router>
           <Dashboard path ="/"/>
@@ -25,16 +26,17 @@ function App() {
           <EditUser path="/user/edit/:id"/>
 
 
-        <CreateTrip path="/trip/create"/>
-        <DisplayAllTrips path="/trip/display/:id/all"/>
-        <DisplayTrip path="/trip/display/:id/:trip_id"/>
-        <EditTrip path="/trip/display/:id/:trip_id/edit"/>
+          <SearchPage path="/trip/search"/>
+          <CreateTrip path="/trip/create"/>
+          <DisplayAllTrips path="/trip/display/:id/all"/>
+          <DisplayTrip path="/trip/display/:id/:trip_id"/>
+          <EditTrip path="/trip/display/:id/:trip_id/edit"/>
 
 
           <InfoPage path="/info"/>
           <LogReg path="/user/login"></LogReg>
         </Router>
-    </>
+    </div>
   );
 }
 
