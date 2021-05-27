@@ -51,7 +51,7 @@ function App() {
 
 
           <SearchPage path="/trip/search"/>
-          <CreateTrip path="/trip/create"/>
+          <CreateTrip path="/trip/create/:location2" />
           <DisplayAllTrips path="/trip/display/:id/all"/>
           <DisplayTrip path="/trip/display/:id/:trip_id"/>
           <EditTrip path="/trip/display/:id/:trip_id/edit"/>

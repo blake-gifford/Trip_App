@@ -33,7 +33,7 @@ const SignUp = (props) => {
       .catch((err) => {
         console.log(err);
 
-        setErrors(err.response.data.errors);
+        setErrors(err.response.results.errors);
       });
   };
 
