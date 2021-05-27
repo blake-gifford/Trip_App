@@ -14,7 +14,7 @@ const TripForm = props => {
                     :
                     ""
                     }
-                    <label htmlFor="name">Name</label>
+                    <label htmlFor="name">Name: </label>
                     <input type="text" name="name" id="" onChange={changeHandler}  />
                 </p>
                 <p>
@@ -23,7 +23,7 @@ const TripForm = props => {
                     :
                     ""
                     }
-                    <label htmlFor="location">Location</label>
+                    <label htmlFor="location">Location: </label>
                     <input type="text" name="location" id="" onChange={changeHandler} value={location}/>
                 </p>
                 <p>
@@ -32,7 +32,7 @@ const TripForm = props => {
                     :
                     ""
                     }
-                    <label htmlFor="startDate">Start Date</label>
+                    <label htmlFor="startDate">Start Date: </label>
                     <input type="date" name="startDate" id="" onChange={changeHandler} />
                 </p>
                 <p>
@@ -41,7 +41,7 @@ const TripForm = props => {
                     :
                     ""
                     }
-                    <label htmlFor="endDate">End Date</label>
+                    <label htmlFor="endDate">End Date: </label>
                     <input type="date" name="endDate" id="" onChange={changeHandler} />
                 </p>
                 <input type="submit" value={ action } />

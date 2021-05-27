@@ -87,8 +87,9 @@ const CreateTrip = props => {
     }
 
     return (
-        <div>
+        <div className="App, center">
             <h2>Set Location to {location2}</h2>
+            <hr/>
             <TripForm location={location2} user={user} changeHandler = {changeHandler} submitHandler = {submitHandler} errors={errors} action="Create Trip!"/>
         </div>
     )
