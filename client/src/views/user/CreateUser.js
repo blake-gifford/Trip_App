@@ -12,7 +12,7 @@ const initialErrors = {
     confirmPassword:'',
 }
 
-const initialUser = {
+const initialRegister = {
     userName:'',
     firstName:'',
     lastName:'',
@@ -22,22 +22,36 @@ const initialUser = {
     trips: [],
 }
 
-const CreateUser = () => {
-    const [ user, setUser ] = useState(initialUser);
-    const [ errors, setErrors ] = useState(initialErrors);
+const initialUser = {
+    id: "",
+    firstName: "",
+    lastName:"",
+    userName:"",
+    email:"",
+}
 
-    const changeHandler = e => {
-        const { name, value } = e.target;
-        setUser({...user, [name]:value})
+const CreateUser = () => {
+    const [ register, setRegister ] = useState(initialRegister);
+    const [ isAuthenticated, setIsAuthenticated]= useState(false)
+    const [ errors, setErrors ] = useState(initialErrors);
+    const [loggedInUser, setLoggedInUser]= useState(initialUser);
+
+    const registerChangeHandler = e => {
+        setRegister({
+            ...register,
+            [e.target.name]:e.target.value
+        })
     }
 
-    const submitHandler = e => {
+    const registerSubmitHandler = e => {
         e.preventDefault();
-        axios.post('http://localhost:8000/api/register', user)
+        axios.post('http://localhost:8000/api/register', register, { withCredentials: true })
         .then(response => {
+            setIsAuthenticated(true)
+            setLoggedInUser(response.data.results)
             const { message, results } = response.data
             if( message === "success"){
-                navigate('/')
+                navigate(`/${loggedInUser.id}`)
             } else {
                 const newErrors = {...initialErrors};
                 console.log(response)
@@ -54,7 +68,34 @@ const CreateUser = () => {
 
     return (
         <div>
-            <UserForm user={user} changeHandler = {changeHandler} submitHandler = {submitHandler} errors={errors} action="Create User!"/>
+            <form onSubmit={registerSubmitHandler} >
+                <div>
+                    <label htmlFor="firstName">First Name:</label>
+                    <input type="text" name="firstName" id="" onChange={registerChangeHandler} value={register.firstName}/>
+                </div>
+                <div>
+                    <label htmlFor="lastName">Last Name:</label>
+                    <input type="text" name="lastName" id="" onChange={registerChangeHandler} value={register.lastName}/>
+                </div>
+                <div>
+                    <label htmlFor="userName">Username:</label>
+                    <input type="text" name="userName" id="" onChange={registerChangeHandler} value={register.userName}/>
+                </div>
+                <div>
+                    <label htmlFor="email">Email:</label>
+                    <input type="text" name="email" id="" onChange={registerChangeHandler} value={register.email}/>
+                </div>
+                <div>
+                    <label htmlFor="password">Password:</label>
+                    <input type="text" name="password" id="" onChange={registerChangeHandler} value={register.password}/>
+                </div>
+                <div>
+                    <label htmlFor="confirmPassword">Confirm Password:</label>
+                    <input type="text" name="confirmPassword" id="" onChange={registerChangeHandler} value={register.confirmPassword}/>
+                </div>
+                <input type="submit" value="Register" />
+                
+            </form>
         </div>
     )
 }
