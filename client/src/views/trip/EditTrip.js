@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import TripForm from "../../components/TripForm"
 import axios from 'axios'
 import { navigate } from '@reach/router'
+import Context from '../../components/Context';
 
 const initialErrors = {
     name:'',
@@ -18,17 +19,18 @@ const initialTrip = {
 }
 
 
-const EditTrip = props => {
+const EditTrip = () => {
 
-    const { id } = props;
+    const context = useContext(Context);
+    const { _id } = context.loggedInUser;
     const [ trip, setTrip] = useState(initialTrip)
     const [ errors, setErrors] = useState(initialErrors)
 
     useEffect(()=>{
-        axios.get(`http://localhost:8000/api/trips/${id}`)
+        axios.get(`http://localhost:8000/api/trips/${_id}`)
             .then(response => setTrip(response.data.results))
             .catch(err => console.log(err))
-    },[id])
+    },[_id])
 
     const changeHandler = e => {
         const { name, value } = e.target;
@@ -37,7 +39,7 @@ const EditTrip = props => {
 
     const submitHandler = e => {
         e.preventDefault();
-        axios.put(`http://localhost:8000/api/trip/update/${id}`, trip)
+        axios.put(`http://localhost:8000/api/trip/update/${_id}`, trip)
         .then(response => {
             const { message, results } = response.data
             if( message === "success"){

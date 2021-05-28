@@ -3,7 +3,7 @@ import React from 'react'
 const TripForm = props => {
 
     const { submitHandler, changeHandler, errors, user, action, location} = props;
-
+    
 
     return (
         <div>
