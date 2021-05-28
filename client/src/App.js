@@ -73,6 +73,7 @@ function App() {
             
             {/* <LogReg setLoggedIn={() => setIsLoggedIn(true)} path="/user/login" /> */}
             <SignIn path="/user/login"/>
+            
 
           </Router>
         </Context.Provider>

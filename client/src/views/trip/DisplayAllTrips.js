@@ -18,11 +18,13 @@ const DisplayAllTrips = () => {
     const context = useContext(Context);
     const { _id } = context.loggedInUser
     const [ user, setUser ] = useState(initialUser)
+    
 
     useEffect(()=>{
         axios.get(`http://localhost:8000/api/user/${_id}`)
             .then(response=> setUser(response.data.results))
             .catch(err => console.log(err))
+        
     },[])
 
     return (
@@ -45,6 +47,7 @@ const DisplayAllTrips = () => {
                         <td>{trip.location}</td>
                         <td>{trip.startDate}</td>
                         <td>{trip.endDate}</td>
+                        <td>{trip._id}</td>
                         <td>
                             <button onClick = { ()=>navigate(`/trip/display/${trip._id}`)}>Details</button>
                             <button onClick = { ()=>navigate(`/trip/display/${trip._id}/edit`)}>Edit</button>

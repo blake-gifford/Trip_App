@@ -19,23 +19,30 @@ const initialTrip = {
 }
 
 
-const EditTrip = () => {
-
+const EditTrip = props => {
+    const { trip_id }= props;
     const context = useContext(Context);
     const { _id } = context.loggedInUser;
     const [ trip, setTrip] = useState(initialTrip)
     const [ errors, setErrors] = useState(initialErrors)
 
     useEffect(()=>{
-        axios.get(`http://localhost:8000/api/trips/${_id}`)
-            .then(response => setTrip(response.data.results))
+        axios.get(`http://localhost:8000/api/user/${_id}`)
+            .then(response => {
+                setTrip(response.data.results.trips.filter(t=>trip_id===t._id)[0])
+                console.log(response.data.results.trips.filter(t=>trip_id===t._id)[0])
+                console.log(response)
+            })
+
             .catch(err => console.log(err))
-    },[_id])
+    },[_id, trip_id])
 
     const changeHandler = e => {
         const { name, value } = e.target;
         setTrip({...trip, [name]:value})
     }
+
+    console.log(trip)
 
     const submitHandler = e => {
         e.preventDefault();
@@ -61,7 +68,7 @@ const EditTrip = () => {
     return (
         <div>
             <h2 className="App">Edit: { trip.name }</h2>
-            <TripForm trip={trip} changeHandler = {changeHandler} submitHandler = {submitHandler} errors={errors} action="Edit Trip!"/>
+            <TripForm  trip={trip} changeHandler = {changeHandler} submitHandler = {submitHandler} errors={errors} action="Edit Trip!"/>
         </div>
     )
 }

@@ -1,12 +1,25 @@
-import React from 'react'
+import React,{ useState, useEffect } from 'react'
 
 const TripForm = props => {
 
-    const { submitHandler, changeHandler, errors, user, action, location} = props;
-    
+    const { submitHandler, changeHandler, errors, user, trip, action, location, name} = props;
+
+    // Trying to prepopulate date
+    // const [startDate, setStartDate] = useState()
+
+    // useEffect(()=>{
+    //     console.log(trip.startDate)
+    //     let temp = trip.startDate.toString()
+    //     console.log(temp)
+    //     temp.slice(0,9)
+    //     console.log(temp)
+    //     // setStartDate(temp.toLocaleDateString("en-US"))
+
+    // },[])
 
     return (
         <div>
+            
             <form onSubmit= { submitHandler }>
                 <p>
                     {errors.name ?
@@ -15,7 +28,7 @@ const TripForm = props => {
                     ""
                     }
                     <label htmlFor="name">Name: </label>
-                    <input type="text" name="name" id="" onChange={changeHandler}  />
+                    <input type="text" name="name" id="" onChange={changeHandler} value={trip.name} />
                 </p>
                 <p>
                     {errors.location ?
@@ -24,7 +37,7 @@ const TripForm = props => {
                     ""
                     }
                     <label htmlFor="location">Location: </label>
-                    <input type="text" name="location" id="" onChange={changeHandler} value={location}/>
+                    <input type="text" name="location" id="" onChange={changeHandler} value={trip.location}/>
 
                 </p>
                 <p>
@@ -43,7 +56,7 @@ const TripForm = props => {
                     ""
                     }
                     <label htmlFor="endDate">End Date: </label>
-                    <input type="date" name="endDate" id="" onChange={changeHandler} />
+                    <input type="date" name="endDate" id="" onChange={changeHandler}  />
                 </p>
                 <input type="submit" value={ action } />
             </form>
