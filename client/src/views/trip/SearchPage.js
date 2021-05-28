@@ -1,4 +1,3 @@
-// import '../App.js';
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { navigate, Link } from '@reach/router';
@@ -85,14 +84,12 @@ const SearchPage = props => {
 
     return (
         <>
-            <div>
-                <Link to="/">Home</Link>
+            <div className="App, center" >
                 <form onSubmit={submitHandler}>
-                    <label htmlFor="location">Search for Trip location: </label>
+                    <label htmlFor="location"><h3>Search for Trip location: </h3></label>
                     <input type="text" name="location" onChange={changeHandler}/>
                     <button >Submit</button>
                 </form>
-                <p>{location.location}</p>
             </div>
         </>
     )

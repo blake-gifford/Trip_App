@@ -2,8 +2,17 @@
   text-align: center;
 }
 
+.center {
+  text-align: center;
+  padding: 50px;
+}
+
 .container {
-  margin: 30px;
+  margin: auto;
+}
+
+.nav_flex {
+  flex-wrap: wrap;
 }
 
 .dash_flex {

@@ -46,7 +46,7 @@ const Dashboard = props => {
 
     return (
         <div className="container">
-            <div>
+            <div className="center">
                 <h2>Welcome {user.firstName}!</h2>
             </div>
             <div className="dash_flex">
