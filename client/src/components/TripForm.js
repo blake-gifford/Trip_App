@@ -25,6 +25,7 @@ const TripForm = props => {
                     }
                     <label htmlFor="location">Location: </label>
                     <input type="text" name="location" id="" onChange={changeHandler} value={location}/>
+
                 </p>
                 <p>
                     {errors.startDate ?

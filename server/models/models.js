@@ -77,15 +77,17 @@ UserSchema.pre("validate", function (next) {
 });
 
 UserSchema.pre("save", function (next) {
-    bcrypt.hash(this.password, 10).then((hash) => {
-    this.password = hash;
-    next();
-    });
+    bcrypt.hash(this.password, 10)
+        .then((hash) => {
+            this.password = hash;
+        });
+        next();
 });
 
 const User = mongoose.model("User", UserSchema);
+const Trip = mongoose.model("Trip", TripSchema);
 
-module.exports = User;
+module.exports = User, Trip;
 
 // user model
 // nested schema with trip location and start and end date name and description

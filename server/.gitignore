@@ -137,6 +137,8 @@ temp/
 
 *.sublime*
 
+.env
+
 psd
 thumb
 sketch

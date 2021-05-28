@@ -32,17 +32,6 @@ const Header = () => {
                     </ul>
                 </li>
             </ul>
-                {/* <h5><button><Link to="/user/view">Account</Link></button>|<button><Link to="/trip/search">Search for a Trip</Link></button>|<button><Link to="/trip/display/all">Your Trips</Link></button>|<Link to="/info">Contact Us</Link>|<Link to="/info">About</Link>|<Link to="/user/create">Sign Up!|</Link> */}
-                {/* <Link to="/user/login">Login|</Link> */}
-                {/* <Link to="/">Logout</Link></h5> */}
-                {/* <h5><Link to="/trip/create">Create Trip</Link>|</h5>
-                <h5><Link to="/trip/display/all">Your Trips</Link>|</h5>
-                <h5><Link to="/info">Contact Us</Link>|</h5>
-                <h5><Link to="/info">About</Link>|</h5> */}
-                {/* <Link to="/user/create">Sign Up!|</Link>
-                <Link to="/user/login">Login|</Link>
-                <Link to="/">Logout</Link> */}
-                
             </header>
         </div>
     )
