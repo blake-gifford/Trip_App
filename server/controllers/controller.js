@@ -90,8 +90,8 @@ module.exports = {
     // },
 
     logout:(req, res)=> {
-    res.clearCookie("userToken");
-    res.json({ message:"success", results:"You have been logged out" });
+        res.clearCookie("userToken");
+        res.json({ message:"success", results:"You have been logged out" });
     },
 
     getLoggedInUser(req, res) {
@@ -128,8 +128,8 @@ module.exports = {
         .catch(err => res.json({ message: "error", results: err }))
     },
     getOneTrip: (req, res) => {
-        User.findOne({"trip._id": req.params.id})
-        .then(user => res.json({ message: "success", results: user }))
+        Trip.findOne({"trip._id": req.params.id})
+        .then(user => res.json({ message: "success", results: trip }))
         .catch(err => res.json({ message: "error", results: err }))
     },
     
@@ -149,7 +149,7 @@ module.exports = {
     //trip delete needs to be refactored
     deleteTrip: (req, res) => {
         Trip.findByIdAndDelete(req.params.id)
-        .then(user => res.json({ message: "success", results: user }))
+        .then(user => res.json({ message: "success", results: trip }))
         .catch(err => res.json({ message: "error", results: err }))
     },
     deleteUser: (req, res) => {

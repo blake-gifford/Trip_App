@@ -1,6 +1,29 @@
-import React from 'react'
-import { Link } from '@reach/router'
+import React,{useState, useContext} from 'react'
+import { Link, navigate } from '@reach/router'
+import axios from 'axios'
+import Context from '../components/Context'
 const Header = () => {
+    const [ isAuthenticated, setIsAuthenticated]= useState(false)
+
+    const context = useContext(Context)
+    
+    const logoutHandler = () => {
+        axios.get('http://localhost:8000/api/logout',  { withCredentials: true })
+            .then(response => {
+                setIsAuthenticated(false)
+                context.setLoggedInUser({
+                _id: "",
+                firstName: "",
+                lastName:"",
+                userName:"",
+                email:"",})
+                navigate("/")
+            }
+            )
+            
+            .catch(err => console.log(err))
+    }
+
     return (
         <div >
             <header className="dash_flex">
@@ -19,6 +42,12 @@ const Header = () => {
                 </li>
                 <li class="nav-item">
                     <Link class="nav-link" to="/user/create">Create Account</Link>
+                </li>
+                <li class="nav-item">
+                    <Link class="nav-link" to="/user/login">Login</Link>
+                </li>
+                <li class="nav-item">
+                    <Link class="nav-link" to="/user/logout" onClick={logoutHandler}>Logout</Link>
                 </li>
                 <li class="nav-item dropdown">
                     <Link class="nav-link dropdown-toggle" data-bs-toggle="dropdown" to="#" role="button" aria-expanded="false">Account</Link>

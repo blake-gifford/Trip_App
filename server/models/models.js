@@ -77,11 +77,13 @@ UserSchema.pre("validate", function (next) {
 });
 
 UserSchema.pre("save", function (next) {
+    console.log(this.password);
     bcrypt.hash(this.password, 10)
         .then((hash) => {
+            console.log(hash)
             this.password = hash;
+            next();
         });
-        next();
 });
 
 const User = mongoose.model("User", UserSchema);

@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import TripForm from "../../components/TripForm"
 import axios from 'axios'
 import { navigate } from '@reach/router'
+import Context from '../../components/Context';
 
 const initialErrors = {
     name:'',
@@ -19,25 +20,33 @@ const initialTrip = {
 
 
 const EditTrip = props => {
-
-    const { id } = props;
+    const { trip_id }= props;
+    const context = useContext(Context);
+    const { _id } = context.loggedInUser;
     const [ trip, setTrip] = useState(initialTrip)
     const [ errors, setErrors] = useState(initialErrors)
 
     useEffect(()=>{
-        axios.get(`http://localhost:8000/api/trips/${id}`)
-            .then(response => setTrip(response.data.results))
+        axios.get(`http://localhost:8000/api/user/${_id}`)
+            .then(response => {
+                setTrip(response.data.results.trips.filter(t=>trip_id===t._id)[0])
+                console.log(response.data.results.trips.filter(t=>trip_id===t._id)[0])
+                console.log(response)
+            })
+
             .catch(err => console.log(err))
-    },[id])
+    },[_id, trip_id])
 
     const changeHandler = e => {
         const { name, value } = e.target;
         setTrip({...trip, [name]:value})
     }
 
+    console.log(trip)
+
     const submitHandler = e => {
         e.preventDefault();
-        axios.put(`http://localhost:8000/api/trip/update/${id}`, trip)
+        axios.put(`http://localhost:8000/api/trip/update/${_id}`, trip)
         .then(response => {
             const { message, results } = response.data
             if( message === "success"){
@@ -59,7 +68,7 @@ const EditTrip = props => {
     return (
         <div>
             <h2 className="App">Edit: { trip.name }</h2>
-            <TripForm trip={trip} changeHandler = {changeHandler} submitHandler = {submitHandler} errors={errors} action="Edit Trip!"/>
+            <TripForm  trip={trip} changeHandler = {changeHandler} submitHandler = {submitHandler} errors={errors} action="Edit Trip!"/>
         </div>
     )
 }

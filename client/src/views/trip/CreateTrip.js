@@ -32,7 +32,7 @@ const CreateTrip = props => {
     
     const context = useContext(Context);
     const { _id } = context.loggedInUser;
-    const {  location2 } = props;
+    const { location2 } = props;
     const [ user, setUser ]=useState(initialUser)
     const [ trip, setTrip] = useState(initialTrip)
     const [ errors, setErrors] = useState(initialErrors)
@@ -44,12 +44,17 @@ const CreateTrip = props => {
     console.log(context.loggedInUser)
 
     useEffect(()=>{
+        
+        setTrip({
+            ...trip, location:location2
+        })
+
         axios.get(`http://localhost:8000/api/user/${_id}`)
             .then(response => setUser(response.data.results))
             .catch(err => console.log(err))
         
-        console.log(location2)
-
+        
+        
         axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${location2},usa&APPID=f3a0744fafc427dc1a65f89621a787ee`)
         .then(response=> {
             let tempInFahrenheit = (response.data.main.temp - 273.15) * 9/5 + 32
@@ -68,9 +73,10 @@ const CreateTrip = props => {
         setTrip({...trip, [name]:value})
     }
 
+    console.log(user)
     const submitHandler = e => {
         e.preventDefault();
-        axios.put(`http://localhost:8000/api/trip/update/${_id}`, user)
+        axios.put(`http://localhost:8000/api/trip/update/${_id}`, trip)
         .then(response => {
             const { message, results } = response.data
             if( message === "success"){
@@ -93,7 +99,7 @@ const CreateTrip = props => {
         <div className="App, center">
             <h2>Set Location to {location2}</h2>
             <hr/>
-            <TripForm location={location2} user={user} changeHandler = {changeHandler} submitHandler = {submitHandler} errors={errors} action="Create Trip!"/>
+            <TripForm trip = {trip} location={location2} user={user} changeHandler = {changeHandler} submitHandler = {submitHandler} errors={errors} action="Create Trip!"/>
         </div>
     )
 }
