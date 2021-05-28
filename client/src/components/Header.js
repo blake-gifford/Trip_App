@@ -20,7 +20,6 @@ const Header = () => {
                 navigate("/")
             }
             )
-            
             .catch(err => console.log(err))
     }
 
