@@ -10,6 +10,7 @@ const SignUp = (props) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
 
+
   const register = (event) => {
     event.preventDefault();
 

@@ -1,10 +1,16 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
+const cookieParser = require('cookie-parser');
 
-app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(
+    cookieParser(),
+    cors({credentials : true, origin: 'http://localhost:3000'}),
+    express.json(),
+    express.urlencoded({ extended: true }),
+    );
+
+
 
 require('./config/mongoose.config');
 require('./routes/routes.js')(app);
