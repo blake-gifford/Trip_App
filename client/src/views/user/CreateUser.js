@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import UserForm from "../../components/UserForm"
 import axios from 'axios'
 import { navigate } from '@reach/router'
+import Context from '../../components/Context';
 
 const initialErrors = {
     userName:'',
@@ -23,7 +24,7 @@ const initialRegister = {
 }
 
 const initialUser = {
-    id: "",
+    _id: "",
     firstName: "",
     lastName:"",
     userName:"",
@@ -31,10 +32,11 @@ const initialUser = {
 }
 
 const CreateUser = () => {
+    const context = useContext(Context);
     const [ register, setRegister ] = useState(initialRegister);
     const [ isAuthenticated, setIsAuthenticated]= useState(false)
     const [ errors, setErrors ] = useState(initialErrors);
-    const [loggedInUser, setLoggedInUser]= useState(initialUser);
+
 
     const registerChangeHandler = e => {
         setRegister({
@@ -43,15 +45,17 @@ const CreateUser = () => {
         })
     }
 
+
     const registerSubmitHandler = e => {
         e.preventDefault();
         axios.post('http://localhost:8000/api/register', register, { withCredentials: true })
         .then(response => {
-            setIsAuthenticated(true)
-            setLoggedInUser(response.data.results)
             const { message, results } = response.data
             if( message === "success"){
-                navigate(`/${loggedInUser.id}`)
+                setIsAuthenticated(true)
+                console.log(response.data.results)
+                context.setLoggedInUser(response.data.results)
+                navigate(`/`)
             } else {
                 const newErrors = {...initialErrors};
                 console.log(response)

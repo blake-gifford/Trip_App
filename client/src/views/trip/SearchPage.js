@@ -21,6 +21,7 @@ const initialTrip = {
 }
 
 const SearchPage = props => {
+
     const { id, trip_id } = props;
     const [ trip, setTrip ] = useState(initialTrip);
     const [ weather, setWeather ] = useState({

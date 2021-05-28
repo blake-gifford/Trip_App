@@ -15,11 +15,20 @@ import SearchPage from './views/trip/SearchPage';
 import SignIn from "./components/LoginReg/SignIn";
 import axios from 'axios';
 import { useState } from 'react';
+import Context from './components/Context';
+
+const initialUser = {
+  _id: "",
+  firstName: "",
+  lastName:"",
+  userName:"",
+  email:"",
+}
 
 function App() {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+  const [loggedInUser, setLoggedInUser]= useState(initialUser);
 
 
   const logout = () => {
@@ -43,28 +52,30 @@ function App() {
 
   return (
     <div className="container">
-      <Header></Header>
-        {isLoggedIn && <button onClick={logout}>Logout</button>}
-        <Router>
-          <Dashboard path ="/:id"/>
-          <CreateUser path="/user/create"/>
-          <ViewUser path="/user/view/:id"/>
-          <EditUser path="/user/edit/:id"/>
+      <Context.Provider value={{loggedInUser, setLoggedInUser}}>
+        <Header></Header>
+          {isLoggedIn && <button onClick={logout}>Logout</button>}
+          <Router>
+            <Dashboard path ="/"/>
+            <CreateUser path="/user/create"/>
+            <ViewUser path="/user/view"/>
+            <EditUser path="/user/edit"/>
 
 
-          <SearchPage path="/trip/search"/>
-          <CreateTrip path="/trip/create/:location2" />
-          <DisplayAllTrips path="/trip/display/:id/all"/>
-          <DisplayTrip path="/trip/display/:id/:trip_id"/>
-          <EditTrip path="/trip/display/:id/:trip_id/edit"/>
+            <SearchPage path="/trip/search"/>
+            <CreateTrip path="/trip/create/:location2" />
+            <DisplayAllTrips path="/trip/display/all"/>
+            <DisplayTrip path="/trip/display/:trip_id"/>
+            <EditTrip path="/trip/display/:trip_id/edit"/>
+            
 
+            <InfoPage path="/info"/>
+            
+            {/* <LogReg setLoggedIn={() => setIsLoggedIn(true)} path="/user/login" /> */}
+            <SignIn path="/user/login"/>
 
-          <InfoPage path="/info"/>
-          
-          {/* <LogReg setLoggedIn={() => setIsLoggedIn(true)} path="/user/login" /> */}
-          <SignIn path="/user/login"/>
-
-        </Router>
+          </Router>
+        </Context.Provider>
     </div>
   );
 }
