@@ -12,7 +12,7 @@ import DisplayTrip from "./views/trip/DisplayOneTrip";
 import EditTrip from "./views/trip/EditTrip";
 import LogReg from "./views/LogReg";
 import SearchPage from './views/trip/SearchPage';
-
+import SignIn from "./components/LoginReg/SignIn";
 import axios from 'axios';
 import { useState } from 'react';
 
@@ -46,7 +46,7 @@ function App() {
       <Header></Header>
         {isLoggedIn && <button onClick={logout}>Logout</button>}
         <Router>
-          <Dashboard path ="/"/>
+          <Dashboard path ="/:id"/>
           <CreateUser path="/user/create"/>
           <ViewUser path="/user/view/:id"/>
           <EditUser path="/user/edit/:id"/>
@@ -61,7 +61,8 @@ function App() {
 
           <InfoPage path="/info"/>
           
-          <LogReg setLoggedIn={() => setIsLoggedIn(true)} path="/user/login" />
+          {/* <LogReg setLoggedIn={() => setIsLoggedIn(true)} path="/user/login" /> */}
+          <SignIn path="/user/login"/>
 
         </Router>
     </div>
