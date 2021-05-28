@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import TripForm from "../../components/TripForm"
 import axios from 'axios'
 import { navigate } from '@reach/router'
+import Context from '../../components/Context';
 
 const initialErrors = {
     name:'',
@@ -28,8 +29,10 @@ const initialUser = {
 }
 
 const CreateTrip = props => {
-
-    const { id, location2 } = props;
+    
+    const context = useContext(Context);
+    const { _id } = context.loggedInUser;
+    const {  location2 } = props;
     const [ user, setUser ]=useState(initialUser)
     const [ trip, setTrip] = useState(initialTrip)
     const [ errors, setErrors] = useState(initialErrors)
@@ -38,12 +41,12 @@ const CreateTrip = props => {
         description: "",
         temp:""
     })
-
+    console.log(context.loggedInUser)
 
     useEffect(()=>{
-        // axios.get(`http://localhost:8000/api/user/${id}`)
-        //     .then(response => setUser(response.data.results))
-        //     .catch(err => console.log(err))
+        axios.get(`http://localhost:8000/api/user/${_id}`)
+            .then(response => setUser(response.data.results))
+            .catch(err => console.log(err))
         
         console.log(location2)
 
@@ -67,7 +70,7 @@ const CreateTrip = props => {
 
     const submitHandler = e => {
         e.preventDefault();
-        axios.put(`http://localhost:8000/api/trip/update/${id}`, user)
+        axios.put(`http://localhost:8000/api/trip/update/${_id}`, user)
         .then(response => {
             const { message, results } = response.data
             if( message === "success"){

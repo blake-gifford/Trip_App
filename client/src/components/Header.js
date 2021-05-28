@@ -6,29 +6,29 @@ const Header = () => {
             <header className="dash_flex">
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    <Link class="nav-link active" aria-current="page" to="/">Home</Link>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/trip/search">Search</a>
+                    <Link class="nav-link" to="/trip/search">Search</Link>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/trip/display/all">Your Trips</a>
+                    <Link class="nav-link" to="/trip/display/all">Your Trips</Link>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/info">About Us</a>
+                    <Link class="nav-link" to="/info">About Us</Link>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/user/create">Create Account</a>
+                    <Link class="nav-link" to="/user/create">Create Account</Link>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Account</a>
+                    <Link class="nav-link dropdown-toggle" data-bs-toggle="dropdown" to="#" role="button" aria-expanded="false">Account</Link>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/view/user">Account Info</a></li>
-                        <li><a class="dropdown-item" href="/user/login">Login</a></li>
-                        <li><a class="dropdown-item" href="/user/create">Create Account</a></li>
-                        <li><a class="dropdown-item" href="/user/create">Create Account</a></li>
+                        <li><Link class="dropdown-item" to="/view/user">Account Info/</Link></li>
+                        <li><Link class="dropdown-item" to="/user/login">Login/</Link></li>
+                        <li><Link class="dropdown-item" to="/user/create">Create Account/</Link></li>
+                        <li><Link class="dropdown-item" to="/user/create">Create Account/</Link></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#">Separated link</a></li>
+                        <li><Link class="dropdown-item" to="#">Separated link/</Link></li>
                     </ul>
                 </li>
             </ul>

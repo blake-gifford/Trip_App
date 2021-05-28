@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import axios from 'axios'
 import { navigate, Link } from '@reach/router'
+import Context from '../../components/Context';
 
 const initialUser = {
     userName:'',
@@ -12,13 +13,14 @@ const initialUser = {
     trips:[],
 }
 
-const DisplayAllTrips = props => {
+const DisplayAllTrips = () => {
 
-    const { id } = props;
+    const context = useContext(Context);
+    const { _id } = context.loggedInUser
     const [ user, setUser ] = useState(initialUser)
 
     useEffect(()=>{
-        axios.get(`http://localhost:8000/api/user/${id}`)
+        axios.get(`http://localhost:8000/api/user/${_id}`)
             .then(response=> setUser(response.data.results))
             .catch(err => console.log(err))
     },[])
@@ -44,8 +46,8 @@ const DisplayAllTrips = props => {
                         <td>{trip.startDate}</td>
                         <td>{trip.endDate}</td>
                         <td>
-                            <button onClick = { ()=>navigate(`/trip/display/${user._id}/${trip._id}`)}>Details</button>
-                            <button onClick = { ()=>navigate(`/trip/display/${user._id}/${trip._id}/edit`)}>Edit</button>
+                            <button onClick = { ()=>navigate(`/trip/display/${trip._id}`)}>Details</button>
+                            <button onClick = { ()=>navigate(`/trip/display/${trip._id}/edit`)}>Edit</button>
                         </td>
                     </tr>
                     )

@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import axios from "axios";
 import { navigate } from "@reach/router";
+import Context from '../../components/Context';
 
 const initialLogin = {
     email:'',
@@ -13,10 +14,12 @@ const initialErrors = {
     password:'',
 }
 const SignIn = () => {
-
-    const [login, setLogin] = useState(initialLogin)
+    // const context = useContext(Context);
+    const {loggedInUser, setLoggedInUser}= useContext(Context);
+    const [ login, setLogin ]=useState(initialLogin);
     const [ isAuthenticated, setIsAuthenticated]= useState(false)
     const [ errors, setErrors ] = useState(initialErrors);
+
 
     const loginChangeHandler =e => {
         setLogin({
@@ -32,8 +35,9 @@ const SignIn = () => {
             const { message, results } = response.data
             if( message === "success"){
                 setIsAuthenticated(true)
-                setLogin(response.data.results)
-                navigate(`/${response.data.results._id}`)
+                setLoggedInUser(response.data.results)
+                console.log(response.data)
+                navigate(`/`)
             }else{
                 alert("Invalid Login Attempt")
                 const newErrors = {...initialErrors};

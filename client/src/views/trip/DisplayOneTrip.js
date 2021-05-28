@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import axios from 'axios'
-
+import Context from '../../components/Context';
 
 const initialTrip = {
     name:'',
@@ -11,11 +11,13 @@ const initialTrip = {
 
 const DisplayOneTrip = props => {
 
-    const { id, trip_id } = props;
+    const context = useContext(Context);
+    const { trip_id } = props;
+    const { _id } = context.loggedInUser
     const [ trip, setTrip ] = useState(initialTrip)
 
     useEffect(()=>{
-        axios.get(`http://localhost:8000/api/user/${id}`)
+        axios.get(`http://localhost:8000/api/user/${_id}`)
             .then(response => {
                 setTrip(response.data.results.trips.filter(t=>trip_id===t._id)[0])
                 console.log(response.data.results.trips.filter(t=>trip_id===t._id)[0])
@@ -23,7 +25,7 @@ const DisplayOneTrip = props => {
             })
 
             .catch(err => console.log(err))
-    },[id, trip_id])
+    },[_id, trip_id])
     
     return (
 
