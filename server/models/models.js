@@ -26,7 +26,7 @@ const TripSchema = new mongoose.Schema({
         required: [true, "Please enter in your trip end date."],
         min: [Date.now, "Please enter in a valid date"]
     }
-})
+}, { timestamps: true })
 
 const UserSchema = new mongoose.Schema({
     // go buck wild with your schema
@@ -65,6 +65,29 @@ const UserSchema = new mongoose.Schema({
     trips: [TripSchema]
 }, { timestamps: true });
 
+const CommentSchema = new mongoose.Schema({
+    comment:{
+        type: String,
+        minlength: [5, "Please create a comment that is longer than 5 characters!"]
+    },
+    userName:{
+        type: String,
+        minlength: [5, "UserName must be longer than 3 characters."]
+    }
+}, { timestamps: true });
+
+const MessageSchema = new mongoose.Schema({
+    message:{ 
+        type: String,
+        minlength: [5, "Please create a message that is longer than 5 characters!"]
+    },
+    userName:{
+        type: String,
+        minlength: [5, "UserName must be longer than 3 characters."]
+    },
+    comments: [CommentSchema]
+}, { timestamps: true });
+
 UserSchema.virtual("confirmPassword")
     .get(() => this._confirmPassword)
     .set((value) => (this._confirmPassword = value));
@@ -88,8 +111,9 @@ UserSchema.pre("save", function (next) {
 
 const User = mongoose.model("User", UserSchema);
 const Trip = mongoose.model("Trip", TripSchema);
+const Message = mongoose.model("Message", MessageSchema);
 
-module.exports = User, Trip;
+module.exports = User, Trip, Message;
 
 // user model
 // nested schema with trip location and start and end date name and description

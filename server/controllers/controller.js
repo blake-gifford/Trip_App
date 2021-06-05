@@ -1,5 +1,6 @@
 const User = require('../models/models');
 const Trip = require('../models/models');
+const Message = require('../models/models');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 require('dotenv').config()
@@ -113,6 +114,21 @@ module.exports = {
             .then(users => res.json({ message: "success", results: users }))
             .catch(err => res.json({ message: "error", results: err }))
     },
+    createMessage(req, res){
+        Message.create(req.body)
+            .then(users => res.json({ message: "success", results: users }))
+            .catch(err => res.json({ message: "error", results: err }))
+    },
+    getAllMessages(req, res){
+        Message.find()
+            .then(users => res.json({ message: "success", results: users }))
+            .catch(err => res.json({ message: "error", results: err }))
+    },
+    updateComment(req, res){
+        Message.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true })
+            .then(users => res.json({ message: "success", results: users }))
+            .catch(err => res.json({ message: "error", results: err }))
+    },
 
     getOneUser(req, res) {
         User.findById(req.params.id)
@@ -157,4 +173,4 @@ module.exports = {
         .then(user => res.json({ message: "success", results: user }))
         .catch(err => res.json({ message: "error", results: err }))
     },
-    }
+}
