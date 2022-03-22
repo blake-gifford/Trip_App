@@ -5,7 +5,7 @@ import SignUp from "../components/LoginReg/SignUp";
 
 const LogReg = ({ setLoggedIn }) => {
   return (
-    <div className="container-flex">
+    <div className="center">
       <SignIn setLoggedIn={setLoggedIn} />
       <SignUp />
     </div>

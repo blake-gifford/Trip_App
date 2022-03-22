@@ -71,33 +71,35 @@ const CreateUser = () => {
     }
 
     return (
-        <div>
+        <div className="center">
+            <h1>Create Account!</h1>
+            <hr></hr>
             <form onSubmit={registerSubmitHandler} >
-                <div>
+                <div className="pad">
                     <label htmlFor="firstName">First Name:</label>
                     <input type="text" name="firstName" id="" onChange={registerChangeHandler} value={register.firstName}/>
                 </div>
-                <div>
+                <div className="pad">
                     <label htmlFor="lastName">Last Name:</label>
                     <input type="text" name="lastName" id="" onChange={registerChangeHandler} value={register.lastName}/>
                 </div>
-                <div>
+                <div className="pad">
                     <label htmlFor="userName">Username:</label>
                     <input type="text" name="userName" id="" onChange={registerChangeHandler} value={register.userName}/>
                 </div>
-                <div>
+                <div className="pad">
                     <label htmlFor="email">Email:</label>
                     <input type="text" name="email" id="" onChange={registerChangeHandler} value={register.email}/>
                 </div>
-                <div>
+                <div className="pad">
                     <label htmlFor="password">Password:</label>
-                    <input type="text" name="password" id="" onChange={registerChangeHandler} value={register.password}/>
+                    <input type="password" name="password" id="" onChange={registerChangeHandler} value={register.password}/>
                 </div>
-                <div>
+                <div className="pad">
                     <label htmlFor="confirmPassword">Confirm Password:</label>
-                    <input type="text" name="confirmPassword" id="" onChange={registerChangeHandler} value={register.confirmPassword}/>
+                    <input type="password" name="confirmPassword" id="" onChange={registerChangeHandler} value={register.confirmPassword}/>
                 </div>
-                <input type="submit" value="Register" />
+                <input className="roundButton" type="submit" value="Register" />
                 
             </form>
         </div>

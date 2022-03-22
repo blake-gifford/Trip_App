@@ -16,6 +16,7 @@ import SignIn from "./components/LoginReg/SignIn";
 import axios from 'axios';
 import { useState } from 'react';
 import Context from './components/Context';
+import Blog from './views/Blog';
 
 const initialUser = {
   _id: "",
@@ -61,14 +62,12 @@ function App() {
             <CreateUser path="/user/create"/>
             <ViewUser path="/user/view"/>
             <EditUser path="/user/edit"/>
-
-
             <SearchPage path="/trip/search"/>
             <CreateTrip path="/trip/create/:location2" />
             <DisplayAllTrips path="/trip/display/all"/>
             <DisplayTrip path="/trip/display/:trip_id"/>
             <EditTrip path="/trip/display/:trip_id/edit"/>
-            
+            <Blog path="/blog" />
 
             <InfoPage path="/info"/>
             

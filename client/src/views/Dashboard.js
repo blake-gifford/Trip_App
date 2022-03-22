@@ -31,7 +31,7 @@ const Dashboard = props => {
             .catch(err => console.log(err))
     },[])
     useEffect(()=>{
-        axios.get(`http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=f3a0744fafc427dc1a65f89621a787ee`)
+        axios.get(`http://api.openweathermap.org/data/2.5/weather?q=Irvine,us&APPID=f3a0744fafc427dc1a65f89621a787ee`)
             .then(response=> {
                 let tempInFahrenheit = (response.data.main.temp - 273.15) * 9/5 + 32
                 let flooredTemp = Math.floor(tempInFahrenheit)

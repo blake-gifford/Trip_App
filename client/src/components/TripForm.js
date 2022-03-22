@@ -4,23 +4,9 @@ const TripForm = props => {
 
     const { submitHandler, changeHandler, errors, user, trip, action, location, name} = props;
 
-    // Trying to prepopulate date
-    // const [startDate, setStartDate] = useState()
-
-    // useEffect(()=>{
-    //     console.log(trip.startDate)
-    //     let temp = trip.startDate.toString()
-    //     console.log(temp)
-    //     temp.slice(0,9)
-    //     console.log(temp)
-    //     // setStartDate(temp.toLocaleDateString("en-US"))
-
-    // },[])
-
     return (
         <div>
-            
-            <form onSubmit= { submitHandler }>
+            <form onSubmit={submitHandler}>
                 <p>
                     {errors.name ?
                     <span>{errors.name}<br></br></span>
@@ -28,7 +14,7 @@ const TripForm = props => {
                     ""
                     }
                     <label htmlFor="name">Name: </label>
-                    <input type="text" name="name" id="" onChange={changeHandler} value={trip.name} />
+                    <input type="text" name="name" onChange={changeHandler} value={trip.name} />
                 </p>
                 <p>
                     {errors.location ?
@@ -37,8 +23,7 @@ const TripForm = props => {
                     ""
                     }
                     <label htmlFor="location">Location: </label>
-                    <input type="text" name="location" id="" onChange={changeHandler} value={trip.location}/>
-
+                    <input type="text" name="location" onChange={changeHandler} value={trip.location}/>
                 </p>
                 <p>
                     {errors.startDate ?
@@ -47,7 +32,7 @@ const TripForm = props => {
                     ""
                     }
                     <label htmlFor="startDate">Start Date: </label>
-                    <input type="date" name="startDate" id="" onChange={changeHandler} />
+                    <input type="date" name="startDate" onChange={changeHandler} />
                 </p>
                 <p>
                     {errors.endDate ?
@@ -56,7 +41,7 @@ const TripForm = props => {
                     ""
                     }
                     <label htmlFor="endDate">End Date: </label>
-                    <input type="date" name="endDate" id="" onChange={changeHandler}  />
+                    <input type="date" name="endDate" onChange={changeHandler}  />
                 </p>
                 <input type="submit" value={ action } />
             </form>
@@ -64,4 +49,4 @@ const TripForm = props => {
     )
 }
 
-export default TripForm
+export default TripForm;

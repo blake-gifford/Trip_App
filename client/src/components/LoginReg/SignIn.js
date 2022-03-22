@@ -56,21 +56,22 @@ const SignIn = () => {
     }
 
     return (
-        <>
+        <div className="center">
             <h2>Login</h2>
+            <hr></hr>
             <form onSubmit={loginSubmitHandler}>
-                <div>
-                    <label htmlFor="email">email</label>
+                <div className="pad">
+                    <label htmlFor="email">Email:  </label>
                     <input type="text" name="email" id="" onChange={loginChangeHandler} />
                 </div>
-                <div>
-                    <label htmlFor="password">password</label>
-                    <input type="text" name="password" id="" onChange={loginChangeHandler} />
+                <div className="pad">
+                    <label htmlFor="password">Password:  </label>
+                    <input type="password" name="password" id="" onChange={loginChangeHandler} />
                 </div>
                 <input type="submit" value="Login" />
                 
             </form>
-        </>
+        </div>
     );
     };
 

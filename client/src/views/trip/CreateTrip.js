@@ -73,21 +73,20 @@ const CreateTrip = props => {
         setTrip({...trip, [name]:value})
     }
 
-    console.log(user)
     const submitHandler = e => {
         e.preventDefault();
         axios.put(`http://localhost:8000/api/trip/update/${_id}`, trip)
         .then(response => {
             const { message, results } = response.data
             if( message === "success"){
-                navigate('/')
+                navigate('/trip/display/all')
             } else {
                 const newErrors = {...initialErrors};
                 console.log(response)
                 if(results.message){
                     newErrors[message] = results[message];
                 }
-                for ( const key in results.errors){
+                for (const key in results.errors){
                     newErrors[key] = results.errors[key].message;
                 }
                 setErrors(newErrors);
@@ -96,10 +95,16 @@ const CreateTrip = props => {
     }
 
     return (
-        <div className="App, center">
+        <div className="center">
             <h2>Set Location to {location2}</h2>
             <hr/>
-            <TripForm trip = {trip} location={location2} user={user} changeHandler = {changeHandler} submitHandler = {submitHandler} errors={errors} action="Create Trip!"/>
+            <TripForm trip={trip} 
+            location={location2} 
+            user={user} 
+            changeHandler={changeHandler} 
+            submitHandler={submitHandler} 
+            errors={errors}
+            action="Create Trip!"/>
         </div>
     )
 }

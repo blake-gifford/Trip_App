@@ -48,7 +48,7 @@ const DisplayOneTrip = props => {
             <p>End Date: {trip.endDate}</p>
             <p>Today looks: {weather.main}, and it'll be a bit {weather.description}</p>
             <p>The temperature will be: {weather.temp} F</p>
-            <button onClick={()=> navigate(`/trip/display/all`)}>Back</button>
+            <button className="roundButton" onClick={()=> navigate(`/trip/display/all`)}>Back</button>
         </div>
     )
 }

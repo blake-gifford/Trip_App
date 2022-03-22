@@ -89,7 +89,7 @@ const SearchPage = props => {
                 <form onSubmit={submitHandler}>
                     <label htmlFor="location"><h3>Search for Trip location: </h3></label>
                     <input type="text" name="location" onChange={changeHandler}/>
-                    <button >Submit</button>
+                    <button className="roundButton">Submit</button>
                 </form>
             </div>
         </>

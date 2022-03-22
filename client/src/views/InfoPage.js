@@ -9,13 +9,11 @@ const InfoPage = () => {
             <ul>
                 <li>blakegifford01@gmail.com</li>
                 <li>jonling88@gmail.com</li>
-                <li>Phone Number: (xxx)-xxx-xxxx</li>
+                <li>Phone Number: (949)-439-2847</li>
             </ul>
             <h1>About Us</h1>
             <hr/>
             <p>We're a small app dedicated to helping our users plan their perfect trip. Come join us and discuss your trip experiences in our community forum!</p>
-            <p>Some info</p>
-
         </div>
     )
 }

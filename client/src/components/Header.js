@@ -40,6 +40,9 @@ const Header = () => {
                     <Link class="nav-link" to="/info">About Us</Link>
                 </li>
                 <li class="nav-item">
+                    <Link class="nav-link" to="/blog">Blog</Link>
+                </li>
+                <li class="nav-item">
                     <Link class="nav-link" to="/user/create">Create Account</Link>
                 </li>
                 <li class="nav-item">
@@ -48,7 +51,7 @@ const Header = () => {
                 <li class="nav-item">
                     <Link class="nav-link" to="/user/logout" onClick={logoutHandler}>Logout</Link>
                 </li>
-                <li class="nav-item dropdown">
+                {/* <li class="nav-item dropdown">
                     <Link class="nav-link dropdown-toggle" data-bs-toggle="dropdown" to="#" role="button" aria-expanded="false">Account</Link>
                     <ul class="dropdown-menu">
                         <li><Link class="dropdown-item" to="/view/user">Account Info/</Link></li>
@@ -58,7 +61,7 @@ const Header = () => {
                         <li><hr class="dropdown-divider" /></li>
                         <li><Link class="dropdown-item" to="#">Separated link/</Link></li>
                     </ul>
-                </li>
+                </li> */}
             </ul>
             </header>
         </div>

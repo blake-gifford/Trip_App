@@ -69,7 +69,7 @@ const EditTrip = props => {
         <div>
             <h2 className="App">Edit: { trip.name }</h2>
             <TripForm  trip={trip} changeHandler = {changeHandler} submitHandler = {submitHandler} errors={errors} action="Edit Trip!"/>
-            <button onClick={()=> navigate(`/trip/display/all`)}>Back</button>
+            <button className="roundButton" onClick={()=> navigate(`/trip/display/all`)}>Back</button>
         </div>
     )
 }
